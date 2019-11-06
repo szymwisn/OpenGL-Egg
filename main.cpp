@@ -31,11 +31,11 @@ static GLfloat theta[] = {0.0, 0.0, 0.0};
 
 void resizeVectors() {
 
-    points.resize(N);
+    points.resize(N + 1);
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < N + 1; i++)
     {
-        points[i].resize(N);
+        points[i].resize(N + 1);
     }
 }
 
@@ -65,8 +65,8 @@ void calculatePoints() {
 
     float u, v;
 
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
+    for (int i = 0; i < N + 1; i++) {
+        for (int j = 0; j < N + 1; j++) {
             u = i * step;
             v = j * step;
 
@@ -99,9 +99,9 @@ void printLines() {
 
     glBegin(GL_LINES);
 
-        for (int i = 0; i < N - 1; i++)
+        for (int i = 0; i < N; i++)
         {
-            for (int j = 0; j < N - 1; j++)
+            for (int j = 0; j < N; j++)
             {
                 Point point = points[i][j];
                 Point point2 = points[i][j + 1];
@@ -131,8 +131,8 @@ void printTriangles() {
 
     glBegin(GL_TRIANGLES);
 
-        for (int i = 0; i < N - 1; i++) {
-            for (int j = 0; j < N - 1; j++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 Point point = points[i][j];
                 Point point2 = points[i][j + 1];
                 Point point3 = points[i + 1][j];
